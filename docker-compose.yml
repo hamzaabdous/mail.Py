@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  # PHP-FPM - Service
+  sendmail:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: sendmail
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - "9006:8082"
